@@ -11,7 +11,10 @@
 
 ### Used libs and techs
 * Spring Boot
+* Spring Security
 * HTML, CSS, Thymeleaf
+* Liquibase
+* Lombok
 * Docker
 * Database: PostgresSQL;
 
