@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>My favourite</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+          integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/themes/smoothness/jquery-ui.css">
+</head>
+<body>
+<div class="row">
+    <table class="table">
+        <tr>
+            <th scope="col">Name</th>
+            <th scope="col">Price</th>
+            <th scope="col">Description</th>
+            <th scope="col">Specifications</th>
+            <th scope="col">Delete from favourites</th>
+            <th scope="col">Add to order</th>
+        </tr>
+        <tr th:each="userFavourite : ${userFavouritesList}">
+            <td th:text="${userFavourite.name}"></td>
+            <td th:text="${userFavourite.price}"></td>
+            <td th:text="${userFavourite.description}"></td>
+            <td th:text="${userFavourite.specifications}"></td>
+            <form method="get" th:action="'/favourites/favourites-delete/' + ${userFavourite.getId()} + '/' + ${userId}">
+                <th><button th:href="index"  type="submit"  class="btm btn-primary form-control mb-2">Delete</button></th>
+            </form>
+            <form method="post" th:action="'/order/create-new-order/' + ${userId} + '/' + ${userFavourite.getId()}">
+                <th><button th:href="index"  type="submit" class="btm btn-outline-primary form-control mb-2">Add</button> </th>
+            </form>
+        </tr>
+    </table>
+</div>
+</body>
+</html>

@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+         https://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.3.xsd">
+
+    <changeSet id="1.0.4" author="Nazar Akolovych">
+        <createTable tableName="orders_components">
+            <column name="order_id" type="uuid">
+                <constraints primaryKey="true"  nullable="false"/>
+            </column>
+            <column name="component_id" type="uuid">
+                <constraints primaryKey="true"  nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+
+    <changeSet id="1.1.4" author="Nazar Akolovych">
+        <addForeignKeyConstraint baseTableName="orders_components"
+                                 baseColumnNames="component_id"
+                                 constraintName="fk_orders_components_components"
+                                 referencedTableName="components"
+                                 referencedColumnNames="id"/>
+    </changeSet>
+    <changeSet id="1.1.5" author="Nazar Akolovych">
+        <addForeignKeyConstraint baseTableName="orders_components"
+                                 baseColumnNames="order_id"
+                                 constraintName="fk_orders_components_orders"
+                                 referencedTableName="orders"
+                                 referencedColumnNames="id"/>
+    </changeSet>
+
+
+</databaseChangeLog>

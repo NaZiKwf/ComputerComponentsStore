@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+         https://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.3.xsd">
+
+    <changeSet id="1.2.1" author="Nazar Akolovych">
+        <insert tableName="components">
+            <column name="id" value="7398fa95-5b92-4334-8512-1cace9bed2eb"/>
+            <column name="name" value="Intel Core i5-10400F"/>
+            <column name="price" value="5199"/>
+            <column name="description" value="Processor"/>
+            <column name="specifications" value="..."/>
+        </insert>
+
+        <insert tableName="components">
+            <column name="id" value="658446f3-1da0-4cb3-ae87-fc50b476678e"/>
+            <column name="name" value="AMD Ryzen 5 7600x"/>
+            <column name="price" value="13499"/>
+            <column name="description" value="Processor"/>
+            <column name="specifications" value="..."/>
+        </insert>
+
+        <insert tableName="components">
+            <column name="id" value="148df673-29b9-415e-bc0c-5bc821fe0a80"/>
+            <column name="name" value="Logitech K580 Slim Multi-Device Wireless"/>
+            <column name="price" value="2199"/>
+            <column name="description" value="Keyboard"/>
+            <column name="specifications" value="..."/>
+        </insert>
+
+        <insert tableName="components">
+            <column name="id" value="23b1f105-9d84-4d67-86fb-9de5420f24b8"/>
+            <column name="name" value="Nvidia GeForce GTX 1660 DUAL 6GB"/>
+            <column name="price" value="10499"/>
+            <column name="description" value="Video card"/>
+            <column name="specifications" value="..."/>
+        </insert>
+
+        <insert tableName="components">
+            <column name="id" value="6c3c107d-0b5a-45eb-b52c-094823f19bfb"/>
+            <column name="name" value="Asus Prime H510M-A"/>
+            <column name="price" value="2999"/>
+            <column name="description" value="Motherboard"/>
+            <column name="specifications" value="..."/>
+        </insert>
+    </changeSet>
+</databaseChangeLog>

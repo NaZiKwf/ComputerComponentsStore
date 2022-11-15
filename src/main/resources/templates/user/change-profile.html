@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Profile page</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+          integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/themes/smoothness/jquery-ui.css">
+</head>
+<body>
+    <section>
+        <div class="container py-5">
+            <h4 class="text-center mt-5 mb-5">Your profile</h4>
+            <div class="row">
+                <div class="col mx-auto">
+                    <div class="card">
+                        <div class="card-body">
+                            <form method="POST" th:object="${changeProfile}" th:action="@{/user/change-profile}">
+                                <div class="form-group">
+                                    <label for="email">Email</label>
+                                    <input type="text" class="form-control" id="email" aria-describedby="email"
+                                           placeholder="Enter your email" th:field="*{email}">
+                                </div>
+                                <div class="form-group">
+                                    <label for="firstName">First name</label>
+                                    <input type="text" class="form-control" id="firstName" aria-describedby="firstName"
+                                           placeholder="Enter your first name" th:field="*{firstName}">
+                                </div>
+                                <div class="form-group">
+                                    <label for="lastName">Last name</label>
+                                    <input type="text" class="form-control" id="lastName" aria-describedby="lastName"
+                                           placeholder="Enter your last name" th:field="*{lastName}">
+                                </div>
+                                <div class="form-group">
+                                    <label for="phone">Address</label>
+                                    <input type="text" class="form-control" id="address" aria-describedby="age"
+                                           placeholder="Enter your address" th:field="*{address}">
+                                </div>
+                                <div class="form-group">
+                                    <label for="phone">Phone</label>
+                                    <input type="text" class="form-control" id="phone" aria-describedby="age"
+                                           placeholder="Enter your phone" th:field="*{phone}">
+                                </div>
+
+                                <input type="hidden" id="id" aria-describedby="id" th:value="${changeProfile.id}"
+                                       th:field="*{id}">
+                                <button type="submit" class="btn btn-outline-success">Confirm</button>
+                            </form>
+                            <a class="btn btn-outline-secondary mr-3" th:href="'/user/profile'" role="button">Back to profile</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+</body>
+</html>

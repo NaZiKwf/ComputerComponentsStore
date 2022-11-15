@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity3">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+          integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/themes/smoothness/jquery-ui.css">
+</head>
+<body>
+<nav class="navbar navbar-expand-lg navbar-light bg-light pr-5 pl-5">
+    <a class="navbar-brand" href="/">
+        Computer Components Store
+    </a>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav mr-auto">
+            <li sec:authorize="isAuthenticated()" class="nav-item active">
+                <a class="nav-link" href="/favourites/my-favourites">Favourites</a>
+            </li>
+            <li sec:authorize="isAuthenticated()" class="nav-item active">
+                <a class="nav-link" href="/user/my-orders">My orders</a>
+            </li>
+            <li sec:authorize="hasRole('ROLE_USER')" class="nav-item active">
+                <a class="nav-link" href="/user/profile">Profile</a>
+            </li>
+            <li sec:authorize="hasRole('ROLE_ADMIN')" class="nav-item active " >
+                <a class="nav-link" href="/user/all-orders">Users orders</a>
+            </li>
+            <li sec:authorize="hasRole('ROLE_ADMIN')" class="nav-item active">
+                <a class="nav-link" href="/user/new-component">Add new component</a>
+            </li>
+            <li sec:authorize="isAnonymous()" class="nav-item active">
+                <a class="nav-link" href="/login">Login</a>
+            </li>
+            <li class="nav-item active">
+                <a class="nav-link" href="/auth/registration">Registration</a>
+            </li>
+            <li sec:authorize="hasRole('ROLE_USER')" class="nav-item active">
+                <a class="nav-link" href="/logout">Logout</a>
+            </li>
+        </ul>
+    </div>
+</nav>
+<div class="container">
+    <h1 class="display-5">Component Overview</h1>
+    <div class="row">
+        <div class="col-sm-4" th:each="component : ${componentList}">
+            <div class="card mt-4">
+                <div class="card-body">
+                    <h5 th:text="${component.name}" class="card-title"></h5>
+                    <p th:text="${component.description}" class="card-text"></p>
+                    <p th:text="${component.price}" class="card-text"></p>
+                    <p th:text="${component.specifications}" class="card-text"></p>
+                    <form method="post" th:action="'/order/create-new-order/' + ${userId} + '/' + ${component.getId()}">
+                        <a sec:authorize="isAuthenticated()" ><button th:href="'/user/profile'" sec:authorize="isAuthenticated()" type="submit" class="btm btn-primary form-control mb-2">Add To Order</button></a>
+                    </form>
+                    <form method="post" th:action="'/favourites/favourites-add/' + ${component.getId()} + '/' + ${userId}">
+                        <a sec:authorize="isAuthenticated()"><button th:href="index" sec:authorize="isAuthenticated()" type="submit"  class="btm btn-primary form-control mb-2" >Like</button></a>
+                    </form>
+                    <form method="post" th:action="'component/' + ${component.getId()}">
+                        <a sec:authorize="hasRole('ROLE_ADMIN')"><button th:formaction="'user/component/' + ${component.getId()}" sec:authorize="hasRole('ROLE_ADMIN')" type="submit" class="btm btn-primary form-control mb-2">Change</button></a>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>

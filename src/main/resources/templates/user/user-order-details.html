@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+        integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/themes/smoothness/jquery-ui.css">
+</head>
+<body>
+<div class="row">
+  <form  method="post" th:object="${userComponentsOrderList}" th:action="'user/order-details/' + ${orderId}">
+    <table class="table">
+      <tr>
+        <th scope="col">Name</th>
+        <th scope="col">Price</th>
+        <th scope="col">Description</th>
+        <th scope="col">Specifications</th>
+      </tr>
+      <tr th:each="component : ${userComponentsOrderList}">
+        <td th:text="${component.name}"></td>
+        <td th:text="${component.price}"></td>
+        <td th:text="${component.description}"></td>
+        <td th:text="${component.specifications}"></td>
+      </tr>
+    </table>
+  </form>
+</div>
+</body>
+</html>

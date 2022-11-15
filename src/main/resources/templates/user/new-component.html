@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+          integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/themes/smoothness/jquery-ui.css">
+</head>
+<body>
+<section>
+  <form method="POST" th:object="${addNewComponent}" th:action="@{/user/new-component}">
+     <div class="mb-md-5 mt-md-4 pb-5">
+        <h2 class="fw-bold mb-2 text-uppercase">Create component</h2>
+
+        <div class="form-outline form-white mb-1">
+            <label class="form-label" for="name">Name</label>
+            <input type="text" th:field="*{name}" id="name"
+                   class="form-control form-control-lg"/>
+        </div>
+        <div class="form-outline form-white mb-1">
+            <label class="form-label" for="price">Price</label>
+            <input type="text" th:field="*{price}" id="price"
+                   class="form-control form-control-lg"/>
+        </div>
+
+        <div class="form-outline form-white mb-1">
+            <label class="form-label" for="description">Description</label>
+            <input type="text" th:field="*{description}" id="description"
+                   class="form-control form-control-lg"/>
+        </div>
+        <div class="form-outline form-white mb-1">
+            <label class="form-label" for="specifications">Specifications</label>
+            <input type="text" th:field="*{specifications}" id="specifications"
+                   class="form-control form-control-lg"/>
+        </div>
+        <div>
+            <button class="btn-outline-dark btn-lg px-5" type="submit">Create</button>
+        </div>
+     </div>
+  </form>
+</section>
+</body>
+</html>

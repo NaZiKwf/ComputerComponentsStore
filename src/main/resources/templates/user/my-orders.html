@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org" >
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+          integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/themes/smoothness/jquery-ui.css">
+</head>
+<body>
+<div class="row">
+    <table class="table">
+        <tr>
+            <th></th>
+            <th scope="col">Status</th>
+            <th scope="col">Order details</th>
+            <th scope="col">Confirm order</th>
+            <th scope="col">Delete order</th>
+        </tr>
+        <tr th:each="order : ${ordersList}">
+            <td></td>
+            <td th:text="${order.status}"></td>
+            <td>
+                <a class="btn btn-outline-primary mr-3" th:href="'/user/order-details/'+${order.getId()}" role="button">Show</a>
+            </td>
+            <form method="post" th:object="${confirmOrder}" th:action="'/user/my-orders/' + ${order.getId()}">
+                <th><button th:href="index"  type="submit"  class="btm btn-primary form-control mb-2" >Confirm</button></th>
+            </form>
+            <form method="get" th:action="'/user/my-orders-delete/'  + ${order.getId()}">
+                <th><button th:href="index"  type="submit"  class="btm btn-primary form-control mb-2">Delete</button></th>
+            </form>
+        </tr>
+    </table>
+</div>
+</body>
+</html>

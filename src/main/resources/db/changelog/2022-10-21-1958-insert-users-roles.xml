@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+         https://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.3.xsd">
+
+    <changeSet id="1.2.0" author="Nazar Akolovych">
+        <insert tableName="users_roles">
+            <column name="role_id" value="6e4333a4-9ee6-49b6-bcd8-0ee64a12a75a"/>
+            <column name="user_id" value="86c456d7-7b9f-4522-aa01-161079ec0759"/>
+        </insert>
+
+        <insert tableName="users_roles">
+            <column name="role_id" value="50291fb4-bedb-4e4c-84ec-beff9949e5fb"/>
+            <column name="user_id" value="86c456d7-7b9f-4522-aa01-161079ec0759"/>
+        </insert>
+
+        <insert tableName="users_roles">
+            <column name="role_id" value="50291fb4-bedb-4e4c-84ec-beff9949e5fb"/>
+            <column name="user_id" value="05acdfd4-2ba8-4024-aa3c-6e94ed1afe57"/>
+        </insert>
+    </changeSet>
+</databaseChangeLog>
