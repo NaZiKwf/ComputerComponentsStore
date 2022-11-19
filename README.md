@@ -12,7 +12,7 @@
 ### Used libs and techs
 * Spring Boot
 * Spring Security
-* HTML, CSS, Thymeleaf
+* Bootstrap, Thymeleaf
 * Liquibase
 * Lombok
 * Docker
