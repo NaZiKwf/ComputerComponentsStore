@@ -54,8 +54,8 @@ public class ComponentServiceImplTest {
     void getAll_should_returnOrders(){
         List<Component> components = new ArrayList<>();
         components.add(new Component(UUID.randomUUID(),"NVIDIA RTX 3070", 21000,"Video card","...", new HashSet<>(), new HashSet<>()));
-        components.add(new Component(UUID.randomUUID(),"NVIDIA RTX 3060", 18000,"Video card","...", new HashSet<>(), new HashSet<>()));;
-        components.add(new Component(UUID.randomUUID(),"NVIDIA RTX 3050ti", 14000,"Video card","...", new HashSet<>(), new HashSet<>()));;
+        components.add(new Component(UUID.randomUUID(),"NVIDIA RTX 3060", 18000,"Video card","...", new HashSet<>(), new HashSet<>()));
+        components.add(new Component(UUID.randomUUID(),"NVIDIA RTX 3050ti", 14000,"Video card","...", new HashSet<>(), new HashSet<>()));
 
         given(componentRepository.findAll()).willReturn(components);
 

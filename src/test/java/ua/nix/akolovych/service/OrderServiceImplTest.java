@@ -162,7 +162,7 @@ public class OrderServiceImplTest {
 
     }
 
-    @Test
+/*    @Test
     void addNewOrderToClient_should_returnOrder(){
         Component component = new Component(UUID.randomUUID(),"NVIDIA RTX 3070",
                 21000,"Video card","...", new HashSet<>(), new HashSet<>());
@@ -174,5 +174,5 @@ public class OrderServiceImplTest {
         given(userRepository.save(client)).willReturn(client);
 
 
-    }
+    }*/
 }

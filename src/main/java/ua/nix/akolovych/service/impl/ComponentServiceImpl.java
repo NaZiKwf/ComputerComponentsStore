@@ -39,7 +39,7 @@ public class ComponentServiceImpl implements ComponentService {
     public Component create(ComponentDto componentDto) {
        if(componentRepository.existsByName(componentDto.getName())){
            log.warn("Component not found");
-           throw new EntityNotFoundException("not found...");
+           throw new EntityNotFoundException("This component is already exist");
        }
        componentDto.setId(null);
        Component component = ConvertorForEntityAndDto.componentDtoToEntity(componentDto);
@@ -50,7 +50,7 @@ public class ComponentServiceImpl implements ComponentService {
     public Component update(ComponentDto componentDto) {
         if(Objects.isNull(getById(componentDto.getId()))){
             log.warn("Component not found");
-            throw new EntityNotFoundException("not found...");
+            throw new EntityNotFoundException("This component doesn't exist");
         }
         return componentRepository.save(ConvertorForEntityAndDto.componentDtoToEntity(componentDto));
     }

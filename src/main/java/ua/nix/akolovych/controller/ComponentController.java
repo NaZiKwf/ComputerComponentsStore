@@ -5,6 +5,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.*;
 import ua.nix.akolovych.dto.ComponentDto;
+import ua.nix.akolovych.exception.EntityNotFoundException;
 import ua.nix.akolovych.service.ComponentService;
 
 import java.util.UUID;
@@ -19,11 +20,6 @@ public class ComponentController {
         this.componentService = componentService;
     }
 
-    @PatchMapping("update-component")
-    public String updateComponent(ModelMap modelMap, @RequestBody ComponentDto componentDto){
-        modelMap.addAttribute("update-component", new ComponentDto(componentService.update(componentDto)));
-        return "index";
-    }
 
     @PostMapping("add-component")
     public String addComponent(ModelMap modelMap, @RequestBody ComponentDto componentDto){

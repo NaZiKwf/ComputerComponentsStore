@@ -5,6 +5,7 @@ import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.ui.ModelMap;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 import ua.nix.akolovych.dto.ComponentDto;
 import ua.nix.akolovych.dto.OrderDto;
@@ -14,12 +15,14 @@ import ua.nix.akolovych.entity.Client;
 import ua.nix.akolovych.entity.Component;
 import ua.nix.akolovych.entity.Order;
 import ua.nix.akolovych.enums.OrderStatus;
+import ua.nix.akolovych.exception.EntityNotFoundException;
 import ua.nix.akolovych.service.ComponentService;
 import ua.nix.akolovych.service.OrderService;
 import ua.nix.akolovych.service.UserService;
 import ua.nix.akolovych.utils.ConvertorForEntityAndDto;
 
 
+import javax.validation.Valid;
 import java.util.List;
 import java.util.Objects;
 import java.util.UUID;
@@ -58,11 +61,8 @@ public class UserController {
                     .stream()
                     .map(ComponentDto::new)
                     .toList());
-
         }
-
         return "user/order-details";
-
     }
 
 
@@ -95,13 +95,18 @@ public class UserController {
     }
 
     @PostMapping("/change-profile")
-    public void changeProfile(@ModelAttribute("changeProfile") UserDto userDto){
+    public String changeProfile(@ModelAttribute("changeProfile") @Valid UserDto userDto, BindingResult result){
         Client loggedInUser = (Client) SecurityContextHolder.
                 getContext().getAuthentication().getPrincipal();
         Client client = userService.findByLogin(loggedInUser.getUsername());
         userDto.setId(client.getId());
         userDto.setLogin(client.getLogin());
         userDto.setPassword(client.getPassword());
+
+        if(result.hasErrors()){
+            return "user/change-profile";
+        }
+
         if(Objects.isNull(userDto.getEmail())){
             userDto.setEmail(client.getEmail());
         }
@@ -117,7 +122,10 @@ public class UserController {
         if(Objects.isNull(userDto.getPhone())){
             userDto.setPhone(client.getPhone());
         }
+        userDto.setPassword(client.getPassword());
         userService.update(userDto);
+
+        return "redirect:/user/profile";
     }
 
     @PostMapping("/my-orders/{orderId}")
@@ -126,7 +134,7 @@ public class UserController {
         if(Objects.equals(order.getStatus(),OrderStatus.UNFINISHED)){
             modelMap.addAttribute("confirmOrder",orderService.updateOrderStatus(orderId,OrderStatus.IN_PROCESSING));
         }
-       return "user/my-orders";
+       return "redirect:";
     }
 
     @PostMapping("/component/{componentId}")
@@ -145,9 +153,14 @@ public class UserController {
     }
 
     @PostMapping("/change-component/{componentId}")
-    public void updateComponent (@ModelAttribute("changeComponent") ComponentDto componentDto,@PathVariable("componentId") UUID componentId){
+    public String updateComponent (ModelMap modelMap, @ModelAttribute("changeComponent") @Valid ComponentDto componentDto,
+                                   BindingResult result, @PathVariable("componentId") UUID componentId){
         Component component = componentService.getById(componentId);
         componentDto.setId(component.getId());
+
+        if(result.hasErrors()){
+            return "user/change-component";
+        }
         if(Objects.isNull(componentDto.getName())){
             componentDto.setName(component.getName());
         }
@@ -160,7 +173,9 @@ public class UserController {
         if(Objects.isNull(componentDto.getSpecifications())){
             componentDto.setSpecifications(component.getSpecifications());
         }
-        componentService.update(componentDto);
+            componentService.update(componentDto);
+
+        return "redirect:/";
     }
 
     @GetMapping("/all-orders")
@@ -175,31 +190,42 @@ public class UserController {
     public String acceptUserOrderByAdmin(ModelMap modelMap, @PathVariable UUID orderId){
         Order order = orderService.getById(orderId);
         if(Objects.equals(order.getStatus(),OrderStatus.IN_PROCESSING)){
-            modelMap.addAttribute("confirmUserOrder",orderService.updateOrderStatus(orderId,OrderStatus.ACCEPTED));
+            try {
+                modelMap.addAttribute("confirmUserOrder", orderService.updateOrderStatus(orderId, OrderStatus.ACCEPTED));
+            }
+            catch (EntityNotFoundException e){
+                modelMap.addAttribute("error",e.getMessage());
+                return "user/all-orders";
+            }
         }
-        return "user/all-orders";
+        return "redirect:";
     }
 
     @PostMapping("/all-orders-cancel/{orderId}")
     public String cancelUserOrderByAdmin(ModelMap modelMap, @PathVariable UUID orderId){
         Order order = orderService.getById(orderId);
         if (Objects.equals(order.getStatus(),OrderStatus.IN_PROCESSING)){
-            modelMap.addAttribute("cancelUserOrder", orderService.updateOrderStatus(orderId,OrderStatus.CANCELED));
+            try {
+                modelMap.addAttribute("cancelUserOrder", orderService.updateOrderStatus(orderId,OrderStatus.CANCELED));
+            }
+            catch (EntityNotFoundException e){
+                modelMap.addAttribute("error", e.getMessage());
+                return "user/all-orders";
+            }
         }
-        return "user/all-orders";
+        return "redirect:";
     }
 
     @GetMapping("/order-details-delete/{componentId}/{orderId}")
-    public String deleteComponentFromFavourites(@PathVariable UUID componentId, @PathVariable UUID orderId){
+    public String deleteComponentFromOrder(@PathVariable UUID componentId, @PathVariable UUID orderId){
         orderService.deleteComponentFromOrder(componentId, orderId);
-        return "user/order-details";
+        return "redirect:/user/my-orders";
     }
 
     @GetMapping("/my-orders-delete/{orderId}")
     public String deleteOrderByUser(ModelMap modelMap, @PathVariable UUID orderId){
-
         orderService.delete(orderId);
-        return "user/my-orders";
+        return "redirect:/user/my-orders";
     }
 
     @GetMapping("/user-order-details/{orderId}")
@@ -223,9 +249,12 @@ public class UserController {
     }
 
     @PostMapping("/new-component")
-    public String addNewComponent(@ModelAttribute("addNewComponent") ComponentDto componentDto, ModelMap modelMap) {
+    public String addNewComponent(@ModelAttribute("addNewComponent") @Valid ComponentDto componentDto, BindingResult result, ModelMap modelMap) {
+        if(result.hasErrors()){
+            return "user/new-component";
+        }
         componentService.create(componentDto);
-        return "index";
+        return "redirect:/";
     }
 
 }

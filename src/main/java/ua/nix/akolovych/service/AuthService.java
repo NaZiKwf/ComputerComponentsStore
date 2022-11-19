@@ -7,7 +7,6 @@ import ua.nix.akolovych.entity.Client;
 
 public interface AuthService {
 
-    Client registration(RegistrationDto registrationDto);
     void logout();
     boolean validate(ModelMap modelMap, RegistrationDto registrationDto);
 }

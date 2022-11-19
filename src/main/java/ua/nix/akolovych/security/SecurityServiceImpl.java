@@ -1,4 +1,4 @@
-package ua.nix.akolovych.security.impl;
+package ua.nix.akolovych.security;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.authentication.AnonymousAuthenticationToken;

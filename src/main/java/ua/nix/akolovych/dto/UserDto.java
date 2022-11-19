@@ -6,6 +6,9 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 import ua.nix.akolovych.entity.Client;
 
+import javax.validation.constraints.Email;
+import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.Pattern;
 import java.util.UUID;
 
 @Data
@@ -21,6 +24,8 @@ public class UserDto {
 
     private String phone;
 
+    @NotEmpty(message = "Email can't be empty!")
+    @Email(message = "{Email.RegistrationDto.Email}")
     private String email;
 
     private String address;

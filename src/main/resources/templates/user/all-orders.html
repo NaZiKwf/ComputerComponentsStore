@@ -30,9 +30,11 @@
             </td>
             <form method="post" th:object="${confirmUserOrder}" th:action="'/user/all-orders/' + ${order.getId()}">
                 <td><button th:href="index"  type="submit"  class="btm btn-primary form-control mb-2" >Accept</button></td>
+                <span th:if="${error}"  th:text="${error}">This order doesn't exist</span>
             </form>
             <form method="post" th:object="${cancelUserOrder}" th:action="'/user/all-orders-cancel/' + ${order.getId()}">
                 <td><button th:href="index"  type="submit"  class="btm btn-primary form-control mb-2" >Cancel</button></td>
+                <span th:if="${error}"  th:text="${error}">This order doesn't exist</span>
             </form>
         </tr>
     </table>

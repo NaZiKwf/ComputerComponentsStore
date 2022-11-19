@@ -24,9 +24,9 @@
             <td></td>
             <td th:text="${order.status}"></td>
             <td>
-                <a class="btn btn-outline-primary mr-3" th:href="'/user/order-details/'+${order.getId()}" role="button">Show</a>
+                <a class="btn btn-outline-primary mr-3" action="#" th:href="'/user/order-details/'+${order.getId()}" role="button">Show</a>
             </td>
-            <form method="post" th:object="${confirmOrder}" th:action="'/user/my-orders/' + ${order.getId()}">
+            <form action="#" method="post" th:object="${confirmOrder}" th:action="'/user/my-orders/' + ${order.getId()}">
                 <th><button th:href="index"  type="submit"  class="btm btn-primary form-control mb-2" >Confirm</button></th>
             </form>
             <form method="get" th:action="'/user/my-orders-delete/'  + ${order.getId()}">

@@ -43,12 +43,12 @@ public class FavouritesController {
     @PostMapping("favourites-add/{componentId}/{userId}")
     public String addComponentToFavourites(@PathVariable UUID componentId,@PathVariable UUID userId){
         userService.addComponentToFavourites(componentId,userId);
-        return "index";
+        return "redirect:/";
     }
 
     @GetMapping("favourites-delete/{componentId}/{userId}")
     public String deleteComponentFromFavourites(ModelMap modelMap,@PathVariable UUID componentId, @PathVariable UUID userId){
         userService.deleteComponentFromFavourites(componentId,userId);
-        return "index";
+        return "redirect:/favourites/my-favourites";
     }
 }

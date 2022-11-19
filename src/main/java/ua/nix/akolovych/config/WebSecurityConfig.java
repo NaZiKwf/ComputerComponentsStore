@@ -21,6 +21,7 @@ public class WebSecurityConfig {
         http
                 .csrf().disable()
                 .authorizeRequests()
+                .antMatchers("/resources/**", "/static/**", "/css/**", "/js/**", "/").permitAll()
                 .antMatchers("/user/all-orders").access("hasRole('ROLE_ADMIN')")
                 .anyRequest().permitAll()
                 .and().formLogin();

@@ -38,7 +38,7 @@ public class OrderController {
         modelMap.addAttribute("client-new-order",new UserDto(userService.findByLogin(loggedInUser.getUsername())));
         Order order = orderService.addNewOrder(userId);
         orderService.addComponentToOrder(componentId,order.getId());
-        return "index";
+        return "redirect:/";
     }
 
 }

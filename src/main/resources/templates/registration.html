@@ -19,17 +19,20 @@
             <label class="form-label" for="login">Login</label>
             <input type="text" th:field="*{login}" id="login"
                    class="form-control form-control-lg"/>
+            <div class="alert alert-warning" th:if="${#fields.hasErrors('login')}" th:errors="*{login}"></div>
         </div>
         <div class="form-outline form-white mb-1">
             <label class="form-label" for="password">Password</label>
             <input type="password" th:field="*{password}" id="password"
                    class="form-control form-control-lg"/>
+            <div class="alert alert-warning" th:if="${#fields.hasErrors('password')}" th:errors="*{password}"></div>
         </div>
 
         <div class="form-outline form-white mb-1">
             <label class="form-label" for="confirmPassword">Email</label>
             <input type="text" th:field="*{email}" id="confirmPassword"
                    class="form-control form-control-lg"/>
+            <div class="alert alert-warning" th:if="${#fields.hasErrors('email')}" th:errors="*{email}"></div>
         </div>
         <div>
         <button class="btn-outline-dark btn-lg px-5" type="submit">Create</button>

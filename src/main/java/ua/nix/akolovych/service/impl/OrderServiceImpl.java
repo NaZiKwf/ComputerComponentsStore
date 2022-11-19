@@ -77,7 +77,7 @@ public class OrderServiceImpl implements OrderService {
         Order order = getById(id);
         if(Objects.isNull(order)){
             log.warn("Order not found");
-            throw new EntityNotFoundException("not found...");
+            throw new EntityNotFoundException("This order doesn't exist");
         }
         order.setStatus(orderStatus);
 

@@ -33,21 +33,6 @@ public class AuthServiceImpl implements AuthService {
     }
 
     @Override
-    public Client registration(RegistrationDto registrationDto) {
-
-        UserDto user = new UserDto();
-        user.setLogin(registrationDto.getLogin());
-        user.setPassword(registrationDto.getPassword());
-        user.setEmail(registrationDto.getEmail());
-
-        Client regClient = userService.create(user);
-
-        securityService.autoLogin(regClient.getLogin(),registrationDto.getPassword());
-
-        return regClient;
-    }
-
-    @Override
     public void logout() {
         securityService.logout();
     }
