@@ -11,7 +11,7 @@
             <column name="name" value="Intel Core i5-10400F"/>
             <column name="price" value="5199"/>
             <column name="description" value="Processor"/>
-            <column name="specifications" value="..."/>
+            <column name="specifications" value="Total Cores- 6; Total Threads- 12; Max Turbo Frequency- 4.30 GHz; Intel® Turbo Boost Technology 2.0 Frequency- 4.30 GHz; Processor Base Frequency- 2.90 GHz"/>
         </insert>
 
         <insert tableName="components">
@@ -19,7 +19,7 @@
             <column name="name" value="AMD Ryzen 5 7600x"/>
             <column name="price" value="13499"/>
             <column name="description" value="Processor"/>
-            <column name="specifications" value="..."/>
+            <column name="specifications" value="Cores- 6; Threads- 12; Base Frequency- 4.7 GHz; Turbo Boost Frequency-	5.3 GHz; Bus frequency- 100 MHz"/>
         </insert>
 
         <insert tableName="components">
@@ -27,7 +27,7 @@
             <column name="name" value="Logitech K580 Slim Multi-Device Wireless"/>
             <column name="price" value="2199"/>
             <column name="description" value="Keyboard"/>
-            <column name="specifications" value="..."/>
+            <column name="specifications" value="Connection Type- Wireless; Host Connection- USB-A; Wireless Connectivity- 2.4 GHz RF, Bluetooth; Wireless Range-	32.8' / 10 ; USB Ports-	None; Audio- None; Full-Functionality OS Support- Android, Chrome OS"/>
         </insert>
 
         <insert tableName="components">
@@ -35,7 +35,7 @@
             <column name="name" value="Nvidia GeForce GTX 1660 DUAL 6GB"/>
             <column name="price" value="10499"/>
             <column name="description" value="Video card"/>
-            <column name="specifications" value="..."/>
+            <column name="specifications" value=" Memory Amount- 6G; Memory Interface- 192bit; DRAM Type- GDDR5; Graphics Clock- 1530 MHz; Boost Clock- 1785 MHz; Memory Clock-	8 Gbps"/>
         </insert>
 
         <insert tableName="components">
@@ -43,7 +43,39 @@
             <column name="name" value="Asus Prime H510M-A"/>
             <column name="price" value="2999"/>
             <column name="description" value="Motherboard"/>
-            <column name="specifications" value="..."/>
+            <column name="specifications" value="Chipset- H510; Memory- DDR4 3200(OC)/2933/2800/2666/2400/2133 MHz; Expansion Slots- Intel® 11th, 10th Gen Processors "/>
+        </insert>
+
+        <insert tableName="components">
+            <column name="id" value="cbf6b9bb-89a3-4bd8-a25c-2918543eff23"/>
+            <column name="name" value="MSI H510M-A Pro"/>
+            <column name="price" value="2789"/>
+            <column name="description" value="Motherboard"/>
+            <column name="specifications" value="Chipset- Intel H510; Memory Support- DDR4 2133, 2666, 2933, 3200 MHz"/>
+        </insert>
+
+        <insert tableName="components">
+            <column name="id" value="2d09682a-bf3c-47eb-aea6-d927e41677f1"/>
+            <column name="name" value="Kingston Fury DDR4-3200 16384 MB "/>
+            <column name="price" value="1999"/>
+            <column name="description" value="Operational memory"/>
+            <column name="specifications" value="Speed- 3200MT/s; Total (Kit) Capacity- 16GB; DRAM Density- 16Gbit"/>
+        </insert>
+
+        <insert tableName="components">
+            <column name="id" value="09f9c091-84f7-426f-90a0-09e6c0030196"/>
+            <column name="name" value="Kingston NV2 500GB M.2 2280 NVMe PCIe 4.0 x4"/>
+            <column name="price" value="1899"/>
+            <column name="description" value="SSD"/>
+            <column name="specifications" value="Storage Capacity-500 GB PCIe 4.0 x4 M.2 2280 SSD; Read Speed-Maximum: 3500 MB/s; Write Speed- Maximum: 2100 MB/s"/>
+        </insert>
+
+        <insert tableName="components">
+            <column name="id" value="40a68418-55da-427f-af10-f9af9ee00ec0"/>
+            <column name="name" value="Transcend StoreJet 25M3S 1TB TS1TSJ25M3S 2.5 USB 3.1 Gen 1"/>
+            <column name="price" value="1899"/>
+            <column name="description" value="HDD"/>
+            <column name="specifications" value="Capacity- 1 TB, USB Type- micro USB to USB Type A"/>
         </insert>
     </changeSet>
 </databaseChangeLog>

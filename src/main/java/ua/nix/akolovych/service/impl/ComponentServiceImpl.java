@@ -21,7 +21,7 @@ public class ComponentServiceImpl implements ComponentService {
     private final ComponentRepository componentRepository;
 
     @Autowired
-    public ComponentServiceImpl(ComponentRepository componentRepository) {
+    public ComponentServiceImpl( ComponentRepository componentRepository) {
         this.componentRepository = componentRepository;
     }
 

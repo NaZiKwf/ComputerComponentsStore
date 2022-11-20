@@ -1,0 +1,32 @@
+.row{
+    width: 95%;
+    margin:auto;
+}
+
+.form-new-component{
+    width: 95%;
+    margin:auto;
+}
+.form-registration{
+    width: 95%;
+    margin:auto;
+}
+.headers{
+    font-weight: bold;
+}
+
+.tables{
+    width: 95%;
+    margin:auto;
+}
+.back-button{
+    display: flex;
+    justify-content: center;
+}
+.display-5{
+    display: flex;
+    justify-content: center;
+}
+.navbar{
+    background-color: lightblue;
+}

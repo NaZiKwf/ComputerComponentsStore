@@ -25,6 +25,6 @@ public class RegistrationDto {
     String password;
 
     @NotEmpty(message = "Email can't be empty!")
-    @Email(message = "{Email.RegistrationDto.Email")
+    @Email(message = "{Email.RegistrationDto.Email}")
     String email;
 }

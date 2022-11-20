@@ -9,7 +9,6 @@ import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 import ua.nix.akolovych.dto.ComponentDto;
 import ua.nix.akolovych.dto.OrderDto;
-import ua.nix.akolovych.dto.RegistrationDto;
 import ua.nix.akolovych.dto.UserDto;
 import ua.nix.akolovych.entity.Client;
 import ua.nix.akolovych.entity.Component;
@@ -23,7 +22,6 @@ import ua.nix.akolovych.utils.ConvertorForEntityAndDto;
 
 
 import javax.validation.Valid;
-import java.util.List;
 import java.util.Objects;
 import java.util.UUID;
 
@@ -31,7 +29,6 @@ import java.util.UUID;
 @Controller
 @RequestMapping("/user")
 public class UserController {
-
     private final UserService userService;
 
     private final ComponentService componentService;
@@ -213,7 +210,7 @@ public class UserController {
                 return "user/all-orders";
             }
         }
-        return "redirect:";
+        return "redirect:/user/all-orders";
     }
 
     @GetMapping("/order-details-delete/{componentId}/{orderId}")

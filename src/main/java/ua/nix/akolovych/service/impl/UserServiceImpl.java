@@ -37,7 +37,8 @@ public class UserServiceImpl implements UserService {
     @Autowired
     private BCryptPasswordEncoder bCryptPasswordEncoder;
 
-    public UserServiceImpl(UserRepository userRepository, OrderRepository orderRepository, RoleRepository roleRepository, ComponentRepository componentRepository, BCryptPasswordEncoder bCryptPasswordEncoder) {
+    public UserServiceImpl( UserRepository userRepository, OrderRepository orderRepository, RoleRepository roleRepository,
+                           ComponentRepository componentRepository, BCryptPasswordEncoder bCryptPasswordEncoder) {
         this.userRepository = userRepository;
         this.orderRepository = orderRepository;
         this.roleRepository = roleRepository;

@@ -1,7 +1,9 @@
 <!DOCTYPE html>
 <html lang="en"
       xmlns="http://www.w3.org/1999/xhtml"
-      xmlns:th="http://www.thymeleaf.org">
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{layout}">
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
@@ -9,10 +11,12 @@
           integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/themes/smoothness/jquery-ui.css">
+    <link rel="stylesheet" th:href="@{/css/main.css}">
 </head>
 <body>
+<div layout:fragment="content">
 <section>
-  <form action="#" method="POST" th:object="${addNewComponent}" th:action="@{/user/new-component}">
+  <form class="form-new-component" method="POST" th:object="${addNewComponent}" th:action="@{/user/new-component}">
      <div class="mb-md-5 mt-md-4 pb-5">
         <h2 class="fw-bold mb-2 text-uppercase">Create component</h2>
 
@@ -20,11 +24,13 @@
             <label class="form-label" for="name">Name</label>
             <input type="text" th:field="*{name}" id="name"
                    class="form-control form-control-lg"/>
+            <div class="alert alert-warning" th:if="${#fields.hasErrors('name')}" th:errors="*{name}"></div>
         </div>
         <div class="form-outline form-white mb-1">
             <label class="form-label" for="price">Price</label>
             <input type="text" th:field="*{price}" id="price"
                    class="form-control form-control-lg"/>
+            <div class="alert alert-warning" th:if="${#fields.hasErrors('price')}" th:errors="*{price}"></div>
         </div>
 
         <div class="form-outline form-white mb-1">
@@ -43,5 +49,6 @@
      </div>
   </form>
 </section>
+</div>
 </body>
 </html>

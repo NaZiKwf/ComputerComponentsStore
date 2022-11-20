@@ -22,8 +22,9 @@ public class WebSecurityConfig {
                 .csrf().disable()
                 .authorizeRequests()
                 .antMatchers("/resources/**", "/static/**", "/css/**", "/js/**", "/").permitAll()
-                .antMatchers("/user/all-orders").access("hasRole('ROLE_ADMIN')")
-                .anyRequest().permitAll()
+                .antMatchers("/user/all-orders", "/user/add-new-component").access("hasRole('ROLE_ADMIN')")
+                .antMatchers("/auth/registration").permitAll()
+                .anyRequest().authenticated()
                 .and().formLogin();
         http.sessionManagement().sessionCreationPolicy(SessionCreationPolicy.ALWAYS);
         return http.build();

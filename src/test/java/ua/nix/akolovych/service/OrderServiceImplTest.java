@@ -161,18 +161,4 @@ public class OrderServiceImplTest {
         assertEquals(expected,orders);
 
     }
-
-/*    @Test
-    void addNewOrderToClient_should_returnOrder(){
-        Component component = new Component(UUID.randomUUID(),"NVIDIA RTX 3070",
-                21000,"Video card","...", new HashSet<>(), new HashSet<>());
-        Client client = new Client(UUID.randomUUID(), "Ivan", "Ivanov", "42425252", "ivanov@gmail.com","...",
-                "23232", "ivan321",new HashSet<>(),new HashSet<>(),new HashSet<>());
-        Order order = new Order(UUID.randomUUID(),client, Instant.now(),null,new HashSet<>(Set.of(component)));
-        given(userRepository.findById(client.getId())).willReturn(Optional.of(client));
-        given(orderRepository.save(order)).willReturn(order);
-        given(userRepository.save(client)).willReturn(client);
-
-
-    }*/
 }

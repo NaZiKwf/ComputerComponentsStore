@@ -42,7 +42,5 @@ public class MainController {
                 .map(ComponentDto::new).toList());
         return "index";
     }
-
-
 }
 

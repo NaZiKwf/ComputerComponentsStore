@@ -1,7 +1,9 @@
 <!DOCTYPE html>
 <html lang="en"
       xmlns="http://www.w3.org/1999/xhtml"
-      xmlns:th="http://www.thymeleaf.org">
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{layout}">
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
@@ -9,8 +11,10 @@
           integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/themes/smoothness/jquery-ui.css">
+    <link rel="stylesheet" th:href="@{/css/main.css}">
 </head>
 <body>
+<div layout:fragment="content">
 <section>
     <div class="container py-5">
         <h4 class="text-center mt-5 mb-5">Component</h4>
@@ -20,19 +24,19 @@
                     <div class="card-body">
                         <div th:object="${componentPage}">
                             <div class="form-group">
-                                <p>Name</p>
+                                <p class="headers">Name</p>
                                 <p th:text="${componentPage.getName()}"></p>
                             </div>
                             <div class="form-group">
-                                <p>Price</p>
+                                <p class="headers">Price</p>
                                 <p th:text="${componentPage.getPrice()}"></p>
                             </div>
                             <div class="form-group">
-                                <p>Description</p>
+                                <p class="headers">Description</p>
                                 <p th:text="${componentPage.getDescription()}"></p>
                             </div>
                             <div class="form-group">
-                                <p>Specifications</p>
+                                <p class="headers">Specifications</p>
                                 <p th:text="${componentPage.getSpecifications()}"></p>
                             </div>
                             <a class="btn btn-outline-primary mr-3" th:href="'/user/change-component/'+${componentPage.getId()}" role="button">Edit component</a>
@@ -43,5 +47,6 @@
         </div>
     </div>
 </section>
+</div>
 </body>
 </html>

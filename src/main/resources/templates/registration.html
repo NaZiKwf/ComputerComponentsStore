@@ -1,7 +1,9 @@
 <!DOCTYPE html>
 <html lang="en"
       xmlns="http://www.w3.org/1999/xhtml"
-      xmlns:th="http://www.thymeleaf.org">
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{layout}">
 <head>
     <meta charset="UTF-8">
     <title>Registration</title>
@@ -9,9 +11,11 @@
           integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/themes/smoothness/jquery-ui.css">
+    <link rel="stylesheet" th:href="@{/css/main.css}">
 </head>
 <body>
-<form method="POST" th:object="${registrationForm}" th:action="@{/auth/registration}">
+<div layout:fragment="content">
+<form class="form-new-component" method="POST" th:object="${registrationForm}" th:action="@{/auth/registration}">
     <div class="mb-md-5 mt-md-4 pb-5">
         <h2 class="fw-bold mb-2 text-uppercase">Create account</h2>
 
@@ -39,5 +43,6 @@
         </div>
     </div>
 </form>
+</div>
 </body>
 </html>
