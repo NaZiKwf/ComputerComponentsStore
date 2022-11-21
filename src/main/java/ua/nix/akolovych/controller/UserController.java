@@ -82,7 +82,7 @@ public class UserController {
         Client loggedInUser = (Client) SecurityContextHolder.
                 getContext().getAuthentication().getPrincipal();
         modelMap.addAttribute("profile", new UserDto(userService.findByLogin(loggedInUser.getUsername())));
-        return "/user/profile";
+        return "user/profile";
     }
 
     @GetMapping("/change-profile")
@@ -139,7 +139,7 @@ public class UserController {
         Component component = componentService.getById(componentId);
         ComponentDto componentDto = ConvertorForEntityAndDto.componentEntityToDto(component);
         modelMap.addAttribute("componentPage", componentDto);
-        return "/user/component";
+        return "user/component";
     }
 
     @GetMapping("/change-component/{componentId}")
