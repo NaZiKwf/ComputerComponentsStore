@@ -16,7 +16,7 @@
 * Liquibase
 * Lombok
 * Docker
-* PostgreSQL;
+* PostgreSQL
 
 ### Start Up
 
