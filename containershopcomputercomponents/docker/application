@@ -1,0 +1,7 @@
+FROM amazoncorretto:17.0.5-alpine
+EXPOSE 8090
+RUN addgroup -S spring-group && adduser -S spring -G spring-group
+USER spring:spring-group
+ARG JAR_FILE=ComputerComponentsStore.jar
+COPY ${JAR_FILE} ComputerComponentsStore.jar
+ENTRYPOINT ["java","-jar","ComputerComponentsStore.jar"]
