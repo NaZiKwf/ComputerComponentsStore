@@ -4,6 +4,7 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import ua.nix.akolovych.dto.ComponentDto;
+import ua.nix.akolovych.dto.FilterDto;
 import ua.nix.akolovych.entity.Component;
 import ua.nix.akolovych.exception.EntityNotFoundException;
 import ua.nix.akolovych.repository.ComponentRepository;
@@ -63,6 +64,19 @@ public class ComponentServiceImpl implements ComponentService {
     @Override
     public List<Component> getAllComponentsFromOrder(UUID orderId) {
         return componentRepository.findAllByOrderId(orderId);
+    }
+
+    @Override
+    public List<Component> getAllFilteredComponents(FilterDto filterDto) {
+        String query = filterDto.getQuery().toLowerCase().trim();
+        List<Component> allComponent = componentRepository.findAll();
+
+        if (filterDto.getSearchBy().equals("title"))
+            return allComponent.stream()
+                    .filter(f -> f.getName().toLowerCase().trim().contains(query))
+                    .toList();
+
+        return allComponent;
     }
 
     @Override

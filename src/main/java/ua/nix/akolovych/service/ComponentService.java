@@ -2,6 +2,7 @@ package ua.nix.akolovych.service;
 
 
 import ua.nix.akolovych.dto.ComponentDto;
+import ua.nix.akolovych.dto.FilterDto;
 import ua.nix.akolovych.entity.Component;
 
 import java.util.List;
@@ -14,6 +15,7 @@ public interface ComponentService {
     Component update (ComponentDto componentDto);
     void delete (UUID id);
     List<Component> getAllComponentsFromOrder(UUID orderId);
+    List<Component> getAllFilteredComponents(FilterDto filterDto);
 
     List<Component> getAllFavouritesComponents(UUID userId);
 }

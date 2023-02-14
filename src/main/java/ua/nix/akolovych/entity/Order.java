@@ -40,6 +40,4 @@ public class Order extends BaseEntity {
             inverseJoinColumns = @JoinColumn(name = "component_id", referencedColumnName = "id"))
     private Set<Component> components = new HashSet<>();
 
-    public Order(UUID fromString) {
-    }
 }

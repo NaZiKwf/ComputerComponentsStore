@@ -17,6 +17,15 @@
 <div layout:fragment="content">
 <div class="container">
     <h1 class="display-5">Component Overview</h1>
+    <form class="search-form" method="get" action="/" th:object="${filterDto}">
+        <label for="search">Search</label>
+        <input class="form-input search-input navbar-indent" type="search" id="search" th:field="*{query}">
+        <label class="navbar-indent" for="select">by</label>
+        <select class="form-input search-input navbar-indent" id="select" th:field="*{searchBy}">
+            <option value="title" selected="selected">Title</option>
+        </select>
+        <input class="tile-button more-info-button navbar-indent remove-margin-top" type="submit" value="Search">
+    </form>
     <div class="row">
         <div class="col-sm-4" th:each="component : ${componentList}">
             <div class="card mt-4">
